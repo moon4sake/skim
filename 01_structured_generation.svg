@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 460" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <text x="40" y="26" font-size="14" font-weight="600" fill="#2C2C2A">Structured generation: the grammar mask</text>
+  <text x="40" y="44" font-size="12" fill="#5F5E5A">At each output step, the model's next-token distribution is intersected with the schema-valid set.</text>
+
+  <!-- ===== LEFT PANEL: Writing position example ===== -->
+  <!-- Layout: panel x=40..420 (width 380). Label column x=56..140 (width 84). Bar x=150..270 (width 120). Value x=280..310.
+       This leaves 110px of clear space on the right side of each row. -->
+  <rect x="40" y="64" width="380" height="360" rx="10" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="56" y="86" font-size="12" font-weight="600" fill="#633806">At a writing position</text>
+  <text x="56" y="102" font-size="10" fill="#5F5E5A" font-style="italic">output so far: [{"name":"get_weather"</text>
+
+  <!-- Sub-section A: Free generation -->
+  <text x="56" y="128" font-size="11" font-weight="500" fill="#888780">Free generation</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">
+    <text x="58" y="148" fill="#444441">","</text>
+    <rect x="150" y="140" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="150" y="140" width="92" height="10" rx="2" fill="#888780"/>
+    <text x="280" y="149" fill="#5F5E5A" font-size="10">0.77</text>
+
+    <text x="58" y="166" fill="#444441">"}"</text>
+    <rect x="150" y="158" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="150" y="158" width="19" height="10" rx="2" fill="#888780"/>
+    <text x="280" y="167" fill="#5F5E5A" font-size="10">0.16</text>
+
+    <text x="58" y="184" fill="#444441">" "</text>
+    <rect x="150" y="176" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="150" y="176" width="5" height="10" rx="2" fill="#888780"/>
+    <text x="280" y="185" fill="#5F5E5A" font-size="10">0.04</text>
+
+    <text x="58" y="202" fill="#444441">":"</text>
+    <rect x="150" y="194" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="150" y="194" width="3" height="10" rx="2" fill="#888780"/>
+    <text x="280" y="203" fill="#5F5E5A" font-size="10">0.02</text>
+
+    <text x="58" y="220" fill="#888780" font-style="italic">other</text>
+    <rect x="150" y="212" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="150" y="212" width="1" height="10" rx="2" fill="#888780"/>
+    <text x="280" y="221" fill="#5F5E5A" font-size="10">0.01</text>
+  </g>
+
+  <!-- Down arrow -->
+  <line x1="230" y1="238" x2="230" y2="260" stroke="#444441" stroke-width="1"/>
+  <polygon points="230,262 226,254 234,254" fill="#444441"/>
+
+  <!-- Sub-section B: Structured -->
+  <text x="56" y="278" font-size="11" font-weight="500" fill="#888780">Structured generation</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">
+    <text x="58" y="298" fill="#0C447C" font-weight="600">","</text>
+    <rect x="150" y="290" width="120" height="10" rx="2" fill="#DAEBFA"/>
+    <rect x="150" y="290" width="120" height="10" rx="2" fill="#378ADD"/>
+    <text x="280" y="299" fill="#0C447C" font-size="10" font-weight="600">1.00</text>
+
+    <text x="58" y="316" fill="#C82020" text-decoration="line-through">"}"</text>
+    <rect x="150" y="308" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="280" y="317" fill="#C82020" font-size="10">masked</text>
+
+    <text x="58" y="334" fill="#C82020" text-decoration="line-through">" "</text>
+    <rect x="150" y="326" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="280" y="335" fill="#C82020" font-size="10">masked</text>
+
+    <text x="58" y="352" fill="#C82020" text-decoration="line-through">":"</text>
+    <rect x="150" y="344" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="280" y="353" fill="#C82020" font-size="10">masked</text>
+
+    <text x="58" y="370" fill="#C82020" text-decoration="line-through" font-style="italic">other</text>
+    <rect x="150" y="362" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="280" y="371" fill="#C82020" font-size="10">masked</text>
+  </g>
+
+  <!-- Bottom verdict -->
+  <rect x="56" y="388" width="348" height="26" rx="6" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="230" y="405" text-anchor="middle" font-size="12" fill="#633806" font-weight="600">schema decides for the model</text>
+
+  <!-- ===== RIGHT PANEL: Deciding position example ===== -->
+  <!-- Layout: panel x=440..820 (width 380). Label column x=456..620 (width 90). Bar x=630..750 (width 120). Value x=760..810.
+       Token names up to 13 chars fit: 13 × 6.6 ≈ 86px, fits in 90px. -->
+  <rect x="440" y="64" width="380" height="360" rx="10" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="456" y="86" font-size="12" font-weight="600" fill="#085041">At a deciding position</text>
+  <text x="456" y="102" font-size="10" fill="#5F5E5A" font-style="italic">output so far: [{"name":"</text>
+
+  <!-- Sub-section A: Free generation -->
+  <text x="456" y="128" font-size="11" font-weight="500" fill="#888780">Free generation</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">
+    <text x="458" y="148" fill="#444441">get_weather</text>
+    <rect x="630" y="140" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="630" y="140" width="70" height="10" rx="2" fill="#888780"/>
+    <text x="760" y="149" fill="#5F5E5A" font-size="10">0.58</text>
+
+    <text x="458" y="166" fill="#444441">get_forecast</text>
+    <rect x="630" y="158" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="630" y="158" width="37" height="10" rx="2" fill="#888780"/>
+    <text x="760" y="167" fill="#5F5E5A" font-size="10">0.31</text>
+
+    <text x="458" y="184" fill="#444441">query_weather</text>
+    <rect x="630" y="176" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="630" y="176" width="8" height="10" rx="2" fill="#888780"/>
+    <text x="760" y="185" fill="#5F5E5A" font-size="10">0.07</text>
+
+    <text x="458" y="202" fill="#444441">fetch_weather</text>
+    <rect x="630" y="194" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="630" y="194" width="4" height="10" rx="2" fill="#888780"/>
+    <text x="760" y="203" fill="#5F5E5A" font-size="10">0.03</text>
+
+    <text x="458" y="220" fill="#888780" font-style="italic">other</text>
+    <rect x="630" y="212" width="120" height="10" rx="2" fill="#E8E6DE"/>
+    <rect x="630" y="212" width="1" height="10" rx="2" fill="#888780"/>
+    <text x="760" y="221" fill="#5F5E5A" font-size="10">0.01</text>
+  </g>
+
+  <line x1="690" y1="238" x2="690" y2="260" stroke="#444441" stroke-width="1"/>
+  <polygon points="690,262 686,254 694,254" fill="#444441"/>
+
+  <!-- Sub-section B: Structured -->
+  <text x="456" y="278" font-size="11" font-weight="500" fill="#888780">Structured generation</text>
+
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="11">
+    <text x="458" y="298" fill="#085041" font-weight="600">get_weather</text>
+    <rect x="630" y="290" width="120" height="10" rx="2" fill="#CFEFE1"/>
+    <rect x="630" y="290" width="79" height="10" rx="2" fill="#0F6E56"/>
+    <text x="760" y="299" fill="#085041" font-size="10" font-weight="600">0.65</text>
+
+    <text x="458" y="316" fill="#085041" font-weight="600">get_forecast</text>
+    <rect x="630" y="308" width="120" height="10" rx="2" fill="#CFEFE1"/>
+    <rect x="630" y="308" width="42" height="10" rx="2" fill="#0F6E56"/>
+    <text x="760" y="317" fill="#085041" font-size="10" font-weight="600">0.35</text>
+
+    <text x="458" y="334" fill="#C82020" text-decoration="line-through">query_weather</text>
+    <rect x="630" y="326" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="760" y="335" fill="#C82020" font-size="10">masked</text>
+
+    <text x="458" y="352" fill="#C82020" text-decoration="line-through">fetch_weather</text>
+    <rect x="630" y="344" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="760" y="353" fill="#C82020" font-size="10">masked</text>
+
+    <text x="458" y="370" fill="#C82020" text-decoration="line-through" font-style="italic">other</text>
+    <rect x="630" y="362" width="120" height="10" rx="2" fill="#FBE1DA"/>
+    <text x="760" y="371" fill="#C82020" font-size="10">masked</text>
+  </g>
+
+  <rect x="456" y="388" width="348" height="26" rx="6" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="630" y="405" text-anchor="middle" font-size="12" fill="#04342C" font-weight="600">the model decides among valid options</text>
+
+  <!-- Bottom caption -->
+  <text x="430" y="444" text-anchor="middle" font-size="11" fill="#5F5E5A">
+    Some steps are forced by the schema; others leave the model a real choice.
+  </text>
+
+</svg>

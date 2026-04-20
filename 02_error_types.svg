@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <text x="40" y="26" font-size="14" font-weight="600" fill="#2C2C2A">Two kinds of error from a pruned tool agent</text>
+  <text x="40" y="44" font-size="12" fill="#5F5E5A">Same prompt, different failure modes.</text>
+
+  <!-- Uniform user query banner -->
+  <rect x="40" y="58" width="780" height="28" rx="6" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="56" y="77" font-size="12" fill="#5F5E5A"><tspan font-weight="600" fill="#2C2C2A">User query: </tspan>"What's the weather like in Seoul?"</text>
+
+  <!-- LEFT COLUMN: Formatting errors -->
+  <rect x="40" y="100" width="390" height="420" rx="10" fill="#FFF6E6" stroke="#854F0B" stroke-width="0.8"/>
+  <text x="60" y="124" font-size="13" font-weight="600" fill="#633806">Formatting errors</text>
+
+  <!-- Example 1: missing closing bracket -->
+  <text x="60" y="152" font-size="11" fill="#888780" font-weight="500">Missing closing bracket</text>
+  <rect x="60" y="162" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="72" y="182" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"name":"get_weather","arguments":</text>
+  <text x="72" y="200" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">{"city":"Seoul"<tspan fill="#C82020" font-weight="600" text-decoration="underline">}</tspan></text>
+  <text x="60" y="224" font-size="11" fill="#C82020" font-style="italic">needs ]] to close the array — invalid JSON</text>
+
+  <!-- Example 2: hallucinated tool name -->
+  <text x="60" y="250" font-size="11" fill="#888780" font-weight="500">Hallucinated tool name</text>
+  <rect x="60" y="260" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="72" y="280" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"name":"<tspan fill="#C82020" font-weight="600" text-decoration="underline">query_weather</tspan>",</text>
+  <text x="72" y="298" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">"arguments":{"city":"Seoul"}}]</text>
+  <text x="60" y="322" font-size="11" fill="#C82020" font-style="italic">not in schema (only get_weather, get_forecast defined)</text>
+
+  <!-- Example 3: wrong key -->
+  <text x="60" y="348" font-size="11" fill="#888780" font-weight="500">Wrong argument key</text>
+  <rect x="60" y="358" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="72" y="378" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"name":"get_weather","arguments":</text>
+  <text x="72" y="396" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">{"<tspan fill="#C82020" font-weight="600" text-decoration="underline">location</tspan>":"Seoul"}}]</text>
+  <text x="60" y="420" font-size="11" fill="#C82020" font-style="italic">schema expects "city" — "location" is rejected</text>
+
+  <!-- Verdict -->
+  <rect x="60" y="448" width="350" height="52" rx="6" fill="#FAC775" stroke="#854F0B" stroke-width="0.8"/>
+  <text x="235" y="470" text-anchor="middle" font-size="13" fill="#633806" font-weight="600">Structured generation prevents these</text>
+  <text x="235" y="488" text-anchor="middle" font-size="11" fill="#633806">invalid tokens are masked at sampling time</text>
+
+  <!-- RIGHT COLUMN: Non-formatting errors -->
+  <rect x="450" y="100" width="390" height="420" rx="10" fill="#EEEDFE" stroke="#3C3489" stroke-width="0.8"/>
+  <text x="470" y="124" font-size="13" font-weight="600" fill="#26215C">Non-formatting errors</text>
+
+  <!-- Example 1: wrong tool -->
+  <text x="470" y="152" font-size="11" fill="#888780" font-weight="500">Picked the wrong tool</text>
+  <rect x="470" y="162" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="482" y="182" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"name":"<tspan fill="#C82020" font-weight="600" text-decoration="underline">get_forecast</tspan>",</text>
+  <text x="482" y="200" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">"arguments":{"city":"Seoul"}}]</text>
+  <text x="470" y="224" font-size="11" fill="#C82020" font-style="italic">query asked for current weather, not a forecast</text>
+
+  <!-- Example 2: wrong argument value -->
+  <text x="470" y="250" font-size="11" fill="#888780" font-weight="500">Extracted the wrong value</text>
+  <rect x="470" y="260" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="482" y="280" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"name":"get_weather",</text>
+  <text x="482" y="298" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">"arguments":{"city":"<tspan fill="#C82020" font-weight="600" text-decoration="underline">Tokyo</tspan>"}}]</text>
+  <text x="470" y="322" font-size="11" fill="#C82020" font-style="italic">substituted a different city than the query mentioned</text>
+
+  <!-- Example 3: refused to call tool -->
+  <text x="470" y="348" font-size="11" fill="#888780" font-weight="500">Refused to call the tool</text>
+  <rect x="470" y="358" width="350" height="46" rx="4" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text x="482" y="378" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#C82020" font-weight="600" text-decoration="underline">I don't have access to weather data.</text>
+  <text x="482" y="396" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#888780" font-style="italic">(no tool call emitted)</text>
+  <text x="470" y="420" font-size="11" fill="#C82020" font-style="italic">misread intent — refused even though get_weather exists</text>
+
+  <!-- Verdict -->
+  <rect x="470" y="448" width="350" height="52" rx="6" fill="#AFA9EC" stroke="#3C3489" stroke-width="0.8"/>
+  <text x="645" y="470" text-anchor="middle" font-size="13" fill="#26215C" font-weight="600">Structured generation can't help</text>
+  <text x="645" y="488" text-anchor="middle" font-size="11" fill="#26215C">model must read the query and choose</text>
+
+</svg>

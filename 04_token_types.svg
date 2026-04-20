@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <!-- Monospace at 12px: ~7.25px per char. Using this to align the gray segments around each reading-token pill.
+       Layout per line:
+         text (gray, up to just before the reading word)
+         rect (blue pill) + tspan (dark blue text, centered)
+         text (gray, continues after) -->
+
+  <!-- PROMPT SECTION -->
+  <text x="40" y="24" font-size="13" font-weight="600" fill="#2C2C2A">Prompt</text>
+
+  <rect x="40" y="36" width="720" height="116" rx="8" fill="#FDFCF7" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Line 1: system (all gray, no reading tokens) -->
+  <text x="56" y="60" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">System: You are a tool-calling assistant.</text>
+
+  <!-- Line 2: tools line with TWO reading pills ("weather" x2). Centerline y=80, pill rect centered on that.
+       Full original text: 'Tools: [{"name":"get_weather","description":"Get current weather"},'
+       Break points:
+         segment A: 'Tools: [{"name":"get_'  = 21 chars -> width 152
+         pill 1: 'weather' 7 chars -> text width 51, pill width with 6px padding each side = 63
+         segment B: '","description":"Get current '  = 28 chars -> width 203
+         pill 2: 'weather' 7 chars -> pill width 63
+         segment C: '"},'  = 3 chars -> width 22
+       Starting at x=56:
+         A:  56 .. 56+152 = 208
+         pill 1: 208 .. 208+63 = 271
+         B:  271 .. 271+203 = 474
+         pill 2: 474 .. 474+63 = 537
+         C:  537 .. 537+22 = 559
+  -->
+  <text x="56" y="84" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">Tools: [{"name":"get_</text>
+
+  <rect x="208" y="72" width="63" height="20" rx="4" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+  <text x="239.5" y="86" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#0C447C" font-weight="700">weather</text>
+
+  <text x="271" y="84" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">","description":"Get current </text>
+
+  <rect x="474" y="72" width="63" height="20" rx="4" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+  <text x="505.5" y="86" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#0C447C" font-weight="700">weather</text>
+
+  <text x="537" y="84" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">"},</text>
+
+  <!-- Line 3: second tool with two 'forecast' pills (8 chars each).
+       Full: '{"name":"get_forecast","description":"Get 7-day forecast"}]'
+       Break:
+         A: '{"name":"get_'  = 13 chars -> 94
+         pill 1: 'forecast' 8 chars, pill = 58+12 = 70
+         B: '","description":"Get 7-day '  = 27 chars -> 196
+         pill 2: 'forecast' 8 chars -> 70
+         C: '"}]' = 3 chars -> 22
+       At x=56:
+         A:  56 .. 150
+         pill 1: 150 .. 220
+         B:  220 .. 416
+         pill 2: 416 .. 486
+         C:  486 .. 508
+  -->
+  <text x="56" y="108" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">{"name":"get_</text>
+
+  <rect x="150" y="96" width="70" height="20" rx="4" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+  <text x="185" y="110" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#0C447C" font-weight="700">forecast</text>
+
+  <text x="220" y="108" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">","description":"Get 7-day </text>
+
+  <rect x="416" y="96" width="70" height="20" rx="4" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+  <text x="451" y="110" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#0C447C" font-weight="700">forecast</text>
+
+  <text x="486" y="108" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">"}]</text>
+
+  <!-- Line 4: user query with one 'Seoul?' pill.
+       Full: "User: What's the weather like in Seoul?"
+       Break:
+         A: "User: What's the weather like in "  = 33 chars -> 239
+         pill: 'Seoul?' 6 chars -> 44+12 = 56 (use 56)
+       At x=56:
+         A:  56 .. 295
+         pill: 295 .. 351
+  -->
+  <text x="56" y="132" font-size="12" fill="#B4B2A9" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">User: What's the weather like in </text>
+
+  <rect x="295" y="120" width="56" height="20" rx="4" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+  <text x="323" y="134" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#0C447C" font-weight="700">Seoul?</text>
+
+  <!-- OUTPUT SECTION -->
+  <text x="40" y="180" font-size="13" font-weight="600" fill="#2C2C2A">Output</text>
+
+  <!-- Write tokens in amber, decide tokens in teal -->
+  <g fill="#FAC775" stroke="#854F0B" stroke-width="0.5">
+    <rect x="40" y="190" width="42" height="28" rx="4"/>
+    <rect x="86" y="190" width="58" height="28" rx="4"/>
+    <rect x="148" y="190" width="30" height="28" rx="4"/>
+  </g>
+  <text x="61" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">[{"</text>
+  <text x="115" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">name</text>
+  <text x="163" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">":"</text>
+
+  <rect x="182" y="190" width="130" height="28" rx="4" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+  <text x="247" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#04342C" font-weight="600">get_weather</text>
+
+  <g fill="#FAC775" stroke="#854F0B" stroke-width="0.5">
+    <rect x="316" y="190" width="42" height="28" rx="4"/>
+    <rect x="362" y="190" width="102" height="28" rx="4"/>
+    <rect x="468" y="190" width="42" height="28" rx="4"/>
+    <rect x="514" y="190" width="50" height="28" rx="4"/>
+    <rect x="568" y="190" width="30" height="28" rx="4"/>
+  </g>
+  <text x="337" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">","</text>
+  <text x="413" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">arguments</text>
+  <text x="489" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">":{"</text>
+  <text x="539" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">city</text>
+  <text x="583" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">":"</text>
+
+  <rect x="602" y="190" width="76" height="28" rx="4" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+  <text x="640" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#04342C" font-weight="600">Seoul</text>
+
+  <rect x="682" y="190" width="78" height="28" rx="4" fill="#FAC775" stroke="#854F0B" stroke-width="0.5"/>
+  <text x="721" y="208" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#633806">"}}]</text>
+
+  <!-- VERDICT STRIP -->
+  <line x1="40" y1="242" x2="760" y2="242" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <g>
+    <rect x="40" y="260" width="14" height="14" rx="3" fill="#DAEBFA" stroke="#378ADD" stroke-width="0.8"/>
+    <text x="62" y="272" font-size="13" fill="#0C447C" font-weight="600">Reading</text>
+    <text x="122" y="272" font-size="12" fill="#5F5E5A">preserve</text>
+  </g>
+
+  <g>
+    <rect x="260" y="260" width="14" height="14" rx="3" fill="#9FE1CB" stroke="#0F6E56" stroke-width="0.8"/>
+    <text x="282" y="272" font-size="13" fill="#085041" font-weight="600">Deciding</text>
+    <text x="346" y="272" font-size="12" fill="#5F5E5A">preserve</text>
+  </g>
+
+  <g>
+    <rect x="490" y="260" width="14" height="14" rx="3" fill="#FAC775" stroke="#854F0B" stroke-width="0.8"/>
+    <text x="512" y="272" font-size="13" fill="#633806" font-weight="600">Writing</text>
+    <text x="568" y="272" font-size="12" fill="#5F5E5A">prune — the schema handles it</text>
+  </g>
+
+</svg>

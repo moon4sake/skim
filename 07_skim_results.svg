@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <text x="40" y="28" font-size="14" font-weight="600" fill="#2C2C2A">SKIM vs LLM-Pruner on Hammer-3B, 25% structured sparsity</text>
+  <text x="40" y="46" font-size="12" fill="#5F5E5A">Full-match accuracy. G = grammar-constrained, F = free. SKIM post-KD reaches .850 on BFCL.</text>
+
+  <!-- ===== LEFT PANEL: BFCL-v3 ===== -->
+  <text x="70" y="82" font-size="13" font-weight="600" fill="#2C2C2A">BFCL-v3</text>
+  <line x1="90" y1="90" x2="90" y2="300" stroke="#888780" stroke-width="0.5"/>
+  <line x1="90" y1="300" x2="430" y2="300" stroke="#888780" stroke-width="0.5"/>
+
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="86" y1="300" x2="90" y2="300" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="304">0.0</text>
+    <line x1="86" y1="247.5" x2="90" y2="247.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="251.5">0.25</text>
+    <line x1="86" y1="195" x2="90" y2="195" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="199">0.50</text>
+    <line x1="86" y1="142.5" x2="90" y2="142.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="146.5">0.75</text>
+    <line x1="86" y1="90" x2="90" y2="90" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="94">1.00</text>
+  </g>
+
+  <line x1="90" y1="247.5" x2="430" y2="247.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="195" x2="430" y2="195" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="142.5" x2="430" y2="142.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="90" x2="430" y2="90" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- Four groups centered at 150, 230, 310, 390. Bar width 18, internal gap 2. -->
+
+  <!-- Group 1: Dense | BFCL: G=0.894 (188), F=0.799 (168) -->
+  <rect x="130" y="112" width="18" height="188" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="150" y="132" width="18" height="168" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="159" y="106" text-anchor="middle" font-size="10" fill="#0C447C" font-weight="600">.894 / .799</text>
+
+  <!-- Group 2: LLM-Pruner post-KD | BFCL: G=0.772 (162), F=0.745 (156) -->
+  <rect x="210" y="138" width="18" height="162" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="230" y="144" width="18" height="156" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="239" y="132" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.772 / .745</text>
+
+  <!-- Group 3: SKIM pre-KD | BFCL: G=0.790 (166), F=0.261 (55) -->
+  <rect x="290" y="134" width="18" height="166" fill="#5DCAA5" stroke="#0F6E56" stroke-width="0.5"/>
+  <rect x="310" y="245" width="18" height="55" fill="#CFEFE1" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="319" y="128" text-anchor="middle" font-size="10" fill="#0F6E56" font-weight="600">.790 / .261</text>
+
+  <!-- Group 4: SKIM post-KD (headline) | BFCL: G=0.850 (179), F=0.133 (28) -->
+  <rect x="370" y="121" width="18" height="179" fill="#0F6E56" stroke="#064334" stroke-width="0.8"/>
+  <rect x="390" y="272" width="18" height="28" fill="#9FE1CB" stroke="#064334" stroke-width="0.8"/>
+  <text x="399" y="115" text-anchor="middle" font-size="10" fill="#064334" font-weight="700">.850 / .133</text>
+
+  <g font-size="10" fill="#2C2C2A">
+    <text x="159" y="314" text-anchor="end" transform="rotate(-45 159 314)">Dense</text>
+    <text x="239" y="314" text-anchor="end" transform="rotate(-45 239 314)">LLM-Pruner post-KD</text>
+  </g>
+  <g font-size="10" fill="#085041">
+    <text x="319" y="314" text-anchor="end" transform="rotate(-45 319 314)">SKIM pre-KD</text>
+  </g>
+  <g font-size="10" fill="#064334" font-weight="700">
+    <text x="399" y="314" text-anchor="end" transform="rotate(-45 399 314)">SKIM post-KD</text>
+  </g>
+
+  <!-- ===== RIGHT PANEL: API-Bank L1 ===== -->
+  <text x="510" y="82" font-size="13" font-weight="600" fill="#2C2C2A">API-Bank L1</text>
+  <line x1="530" y1="90" x2="530" y2="300" stroke="#888780" stroke-width="0.5"/>
+  <line x1="530" y1="300" x2="870" y2="300" stroke="#888780" stroke-width="0.5"/>
+
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="526" y1="300" x2="530" y2="300" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="304">0.0</text>
+    <line x1="526" y1="247.5" x2="530" y2="247.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="251.5">0.25</text>
+    <line x1="526" y1="195" x2="530" y2="195" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="199">0.50</text>
+    <line x1="526" y1="142.5" x2="530" y2="142.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="146.5">0.75</text>
+    <line x1="526" y1="90" x2="530" y2="90" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="94">1.00</text>
+  </g>
+
+  <line x1="530" y1="247.5" x2="870" y2="247.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="195" x2="870" y2="195" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="142.5" x2="870" y2="142.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="90" x2="870" y2="90" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- Group 1: Dense | API: G=0.762 (160), F=0.759 (159) -->
+  <rect x="570" y="140" width="18" height="160" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="590" y="141" width="18" height="159" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="599" y="134" text-anchor="middle" font-size="10" fill="#0C447C" font-weight="600">.762 / .759</text>
+
+  <!-- Group 2: LLM-Pruner post-KD | API: G=0.652 (137), F=0.534 (112) -->
+  <rect x="650" y="163" width="18" height="137" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="670" y="188" width="18" height="112" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="679" y="157" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.652 / .534</text>
+
+  <!-- Group 3: SKIM pre-KD | API: G=0.674 (142), F=0.246 (52) -->
+  <rect x="730" y="158" width="18" height="142" fill="#5DCAA5" stroke="#0F6E56" stroke-width="0.5"/>
+  <rect x="750" y="248" width="18" height="52" fill="#CFEFE1" stroke="#0F6E56" stroke-width="0.5"/>
+  <text x="759" y="152" text-anchor="middle" font-size="10" fill="#0F6E56" font-weight="600">.674 / .246</text>
+
+  <!-- Group 4: SKIM post-KD | API: G=0.702 (147), F=0.143 (30) -->
+  <rect x="810" y="153" width="18" height="147" fill="#0F6E56" stroke="#064334" stroke-width="0.8"/>
+  <rect x="830" y="270" width="18" height="30" fill="#9FE1CB" stroke="#064334" stroke-width="0.8"/>
+  <text x="839" y="147" text-anchor="middle" font-size="10" fill="#064334" font-weight="700">.702 / .143</text>
+
+  <g font-size="10" fill="#2C2C2A">
+    <text x="599" y="314" text-anchor="end" transform="rotate(-45 599 314)">Dense</text>
+    <text x="679" y="314" text-anchor="end" transform="rotate(-45 679 314)">LLM-Pruner post-KD</text>
+  </g>
+  <g font-size="10" fill="#085041">
+    <text x="759" y="314" text-anchor="end" transform="rotate(-45 759 314)">SKIM pre-KD</text>
+  </g>
+  <g font-size="10" fill="#064334" font-weight="700">
+    <text x="839" y="314" text-anchor="end" transform="rotate(-45 839 314)">SKIM post-KD</text>
+  </g>
+
+  <!-- Legend -->
+  <line x1="40" y1="400" x2="860" y2="400" stroke="#D3D1C7" stroke-width="0.5"/>
+  <g transform="translate(220, 420)">
+    <rect x="0" y="-9" width="12" height="10" fill="#378ADD" stroke="#185FA5" stroke-width="0.4"/>
+    <rect x="13" y="-9" width="12" height="10" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.4"/>
+    <text x="32" y="0" font-size="11" fill="#0C447C">Dense (G / F)</text>
+
+    <rect x="140" y="-9" width="12" height="10" fill="#B4B2A9" stroke="#444441" stroke-width="0.4"/>
+    <rect x="153" y="-9" width="12" height="10" fill="#E8E6DE" stroke="#444441" stroke-width="0.4"/>
+    <text x="172" y="0" font-size="11" fill="#444441">LLM-Pruner (G / F)</text>
+
+    <rect x="310" y="-9" width="12" height="10" fill="#0F6E56" stroke="#064334" stroke-width="0.4"/>
+    <rect x="323" y="-9" width="12" height="10" fill="#9FE1CB" stroke="#064334" stroke-width="0.4"/>
+    <text x="342" y="0" font-size="11" fill="#064334" font-weight="600">SKIM (G / F)</text>
+  </g>
+
+</svg>

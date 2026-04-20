@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <text x="40" y="28" font-size="14" font-weight="600" fill="#2C2C2A">Existing pruners damage tool-calling — and KD does not fix it</text>
+  <text x="40" y="46" font-size="12" fill="#5F5E5A">Hammer-3B at 25% structured sparsity. G = grammar-constrained, F = free. FLAP row shows grammar inversion (G &lt; F).</text>
+
+  <!-- ===== LEFT PANEL: BFCL-v3 ===== -->
+  <!-- Plot area: x=[90,430], y=[90,300]. Width 340, height 210 -> 1.0 = 210px -->
+  <text x="70" y="82" font-size="13" font-weight="600" fill="#2C2C2A">BFCL-v3</text>
+  <line x1="90" y1="90" x2="90" y2="300" stroke="#888780" stroke-width="0.5"/>
+  <line x1="90" y1="300" x2="430" y2="300" stroke="#888780" stroke-width="0.5"/>
+
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="86" y1="300" x2="90" y2="300" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="304">0.0</text>
+    <line x1="86" y1="247.5" x2="90" y2="247.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="251.5">0.25</text>
+    <line x1="86" y1="195" x2="90" y2="195" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="199">0.50</text>
+    <line x1="86" y1="142.5" x2="90" y2="142.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="146.5">0.75</text>
+    <line x1="86" y1="90" x2="90" y2="90" stroke="#888780" stroke-width="0.5"/>
+    <text x="82" y="94">1.00</text>
+  </g>
+
+  <line x1="90" y1="247.5" x2="430" y2="247.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="195" x2="430" y2="195" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="142.5" x2="430" y2="142.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="90" y1="90" x2="430" y2="90" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- Four groups. Group width (2 bars × 18 + 2 gap) = 38px. Four groups + 3 gaps in 340px.
+       Groups at centers 150, 230, 310, 390. Gap between centers = 80. Bar G at (center-20,center-2), F at (center+2, center+20). -->
+
+  <!-- Group 1: Dense | BFCL Hammer: G=0.894 (188), F=0.799 (168) -->
+  <rect x="130" y="112" width="18" height="188" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="150" y="132" width="18" height="168" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="159" y="106" text-anchor="middle" font-size="10" fill="#0C447C" font-weight="600">.894 / .799</text>
+
+  <!-- Group 2: LLM-Pruner pre-KD | BFCL: G=0.714 (150), F=0.558 (117) -->
+  <rect x="210" y="150" width="18" height="150" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="230" y="183" width="18" height="117" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="239" y="144" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.714 / .558</text>
+
+  <!-- Group 3: LLM-Pruner post-KD | BFCL: G=0.772 (162), F=0.745 (156) -->
+  <rect x="290" y="138" width="18" height="162" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="310" y="144" width="18" height="156" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="319" y="132" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.772 / .745</text>
+
+  <!-- Group 4: FLAP post-KD (inversion highlight) | BFCL: G=0.514 (108), F=0.748 (157) -->
+  <rect x="370" y="192" width="18" height="108" fill="#D85A30" stroke="#993C1D" stroke-width="0.8"/>
+  <rect x="390" y="143" width="18" height="157" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.8"/>
+  <text x="399" y="137" text-anchor="middle" font-size="10" fill="#993C1D" font-weight="700">.514 / .748</text>
+  <!-- Inversion marker: a small arrow-text "G < F" in red -->
+  <text x="399" y="175" text-anchor="middle" font-size="9" fill="#993C1D" font-weight="700" font-style="italic">G &lt; F</text>
+
+  <!-- X-axis group labels, rotated -30deg. Anchor near top (y=312). -->
+  <g font-size="10" fill="#2C2C2A">
+    <text x="159" y="314" text-anchor="end" transform="rotate(-45 159 314)">Dense</text>
+    <text x="239" y="314" text-anchor="end" transform="rotate(-45 239 314)">LLM-Pruner pre-KD</text>
+    <text x="319" y="314" text-anchor="end" transform="rotate(-45 319 314)">LLM-Pruner post-KD</text>
+  </g>
+  <g font-size="10" fill="#993C1D" font-weight="600">
+    <text x="399" y="314" text-anchor="end" transform="rotate(-45 399 314)">FLAP post-KD</text>
+  </g>
+
+  <!-- ===== RIGHT PANEL: API-Bank L1 ===== -->
+  <text x="510" y="82" font-size="13" font-weight="600" fill="#2C2C2A">API-Bank L1</text>
+  <line x1="530" y1="90" x2="530" y2="300" stroke="#888780" stroke-width="0.5"/>
+  <line x1="530" y1="300" x2="870" y2="300" stroke="#888780" stroke-width="0.5"/>
+
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="526" y1="300" x2="530" y2="300" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="304">0.0</text>
+    <line x1="526" y1="247.5" x2="530" y2="247.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="251.5">0.25</text>
+    <line x1="526" y1="195" x2="530" y2="195" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="199">0.50</text>
+    <line x1="526" y1="142.5" x2="530" y2="142.5" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="146.5">0.75</text>
+    <line x1="526" y1="90" x2="530" y2="90" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="94">1.00</text>
+  </g>
+
+  <line x1="530" y1="247.5" x2="870" y2="247.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="195" x2="870" y2="195" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="142.5" x2="870" y2="142.5" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="90" x2="870" y2="90" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- Group 1: Dense | API: G=0.762 (160), F=0.759 (159) -->
+  <rect x="570" y="140" width="18" height="160" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="590" y="141" width="18" height="159" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="599" y="134" text-anchor="middle" font-size="10" fill="#0C447C" font-weight="600">.762 / .759</text>
+
+  <!-- Group 2: LLM-Pruner pre-KD | API: G=0.596 (125), F=0.283 (59) -->
+  <rect x="650" y="175" width="18" height="125" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="670" y="241" width="18" height="59" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="679" y="169" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.596 / .283</text>
+
+  <!-- Group 3: LLM-Pruner post-KD | API: G=0.652 (137), F=0.534 (112) -->
+  <rect x="730" y="163" width="18" height="137" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <rect x="750" y="188" width="18" height="112" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <text x="759" y="157" text-anchor="middle" font-size="10" fill="#444441" font-weight="600">.652 / .534</text>
+
+  <!-- Group 4: FLAP post-KD (inversion) | API: G=0.529 (111), F=0.622 (131) -->
+  <rect x="810" y="189" width="18" height="111" fill="#D85A30" stroke="#993C1D" stroke-width="0.8"/>
+  <rect x="830" y="169" width="18" height="131" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.8"/>
+  <text x="839" y="163" text-anchor="middle" font-size="10" fill="#993C1D" font-weight="700">.529 / .622</text>
+  <text x="839" y="195" text-anchor="middle" font-size="9" fill="#993C1D" font-weight="700" font-style="italic">G &lt; F</text>
+
+  <g font-size="10" fill="#2C2C2A">
+    <text x="599" y="314" text-anchor="end" transform="rotate(-45 599 314)">Dense</text>
+    <text x="679" y="314" text-anchor="end" transform="rotate(-45 679 314)">LLM-Pruner pre-KD</text>
+    <text x="759" y="314" text-anchor="end" transform="rotate(-45 759 314)">LLM-Pruner post-KD</text>
+  </g>
+  <g font-size="10" fill="#993C1D" font-weight="600">
+    <text x="839" y="314" text-anchor="end" transform="rotate(-45 839 314)">FLAP post-KD</text>
+  </g>
+
+  <!-- Legend -->
+  <line x1="40" y1="400" x2="860" y2="400" stroke="#D3D1C7" stroke-width="0.5"/>
+  <g transform="translate(230, 420)">
+    <rect x="0" y="-9" width="12" height="10" fill="#378ADD" stroke="#185FA5" stroke-width="0.4"/>
+    <rect x="13" y="-9" width="12" height="10" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.4"/>
+    <text x="32" y="0" font-size="11" fill="#0C447C">Dense (G / F)</text>
+
+    <rect x="140" y="-9" width="12" height="10" fill="#B4B2A9" stroke="#444441" stroke-width="0.4"/>
+    <rect x="153" y="-9" width="12" height="10" fill="#E8E6DE" stroke="#444441" stroke-width="0.4"/>
+    <text x="172" y="0" font-size="11" fill="#444441">LLM-Pruner (G / F)</text>
+
+    <rect x="310" y="-9" width="12" height="10" fill="#D85A30" stroke="#993C1D" stroke-width="0.4"/>
+    <rect x="323" y="-9" width="12" height="10" fill="#F5C4B3" stroke="#993C1D" stroke-width="0.4"/>
+    <text x="342" y="0" font-size="11" fill="#993C1D" font-weight="500">FLAP (G / F) — inversion</text>
+  </g>
+
+</svg>
