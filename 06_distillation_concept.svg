@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <!-- ROW 1: Position categories -->
+  <text x="40" y="32" font-size="11" font-weight="600" fill="#888780" letter-spacing="0.06em">POSITIONS</text>
+
+  <rect x="150" y="44" width="260" height="52" rx="10" fill="#DAEBFA" stroke="#378ADD" stroke-width="1"/>
+  <text x="280" y="72" text-anchor="middle" font-size="14" fill="#0C447C" font-weight="700">Reading</text>
+  <text x="280" y="88" text-anchor="middle" font-size="11" fill="#185FA5">content endpoints in prompt</text>
+
+  <rect x="420" y="44" width="180" height="52" rx="10" fill="#CFEFE1" stroke="#0F6E56" stroke-width="1"/>
+  <text x="510" y="72" text-anchor="middle" font-size="14" fill="#085041" font-weight="700">Deciding</text>
+  <text x="510" y="88" text-anchor="middle" font-size="11" fill="#0F6E56">tool + value in output</text>
+
+  <rect x="610" y="44" width="150" height="52" rx="10" fill="#FCE5BF" stroke="#854F0B" stroke-width="1"/>
+  <text x="685" y="72" text-anchor="middle" font-size="14" fill="#633806" font-weight="700">Writing</text>
+  <text x="685" y="88" text-anchor="middle" font-size="11" fill="#854F0B">structural tokens</text>
+
+  <!-- Arrows down -->
+  <g stroke="#444441" stroke-width="1" fill="none">
+    <line x1="280" y1="96" x2="280" y2="128"/>
+    <polygon points="280,130 276,122 284,122" fill="#444441"/>
+    <line x1="510" y1="96" x2="510" y2="128"/>
+    <polygon points="510,130 506,122 514,122" fill="#444441"/>
+  </g>
+  <!-- No arrow for Writing: dashed line stub indicates 'no loss' -->
+  <line x1="685" y1="96" x2="685" y2="124" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+  <!-- ROW 2: SKIM KD losses, position-aligned -->
+  <text x="40" y="150" font-size="11" font-weight="600" fill="#085041" letter-spacing="0.06em">SKIM KD</text>
+
+  <!-- Reading loss -->
+  <rect x="150" y="134" width="260" height="46" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <text x="280" y="154" text-anchor="middle" font-size="13" fill="#26215C" font-weight="700" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">L_hidden</text>
+  <text x="280" y="170" text-anchor="middle" font-size="10" fill="#3C3489">hidden-state MSE</text>
+
+  <!-- Deciding loss (stacked L_hidden + L_dec_KL) -->
+  <rect x="420" y="134" width="180" height="46" rx="8" fill="#EEEDFE" stroke="#534AB7" stroke-width="1"/>
+  <text x="510" y="154" text-anchor="middle" font-size="13" fill="#26215C" font-weight="700" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">L_hidden + L_dec_KL</text>
+  <text x="510" y="170" text-anchor="middle" font-size="10" fill="#3C3489">MSE + schema-restricted KL</text>
+
+  <!-- Writing: no loss -->
+  <rect x="610" y="134" width="150" height="46" rx="8" fill="#FDFCF7" stroke="#B4B2A9" stroke-width="0.8" stroke-dasharray="4 3"/>
+  <text x="685" y="156" text-anchor="middle" font-size="13" fill="#888780" font-weight="600">no extra loss</text>
+  <text x="685" y="171" text-anchor="middle" font-size="10" fill="#888780" font-style="italic">structured gen handles it</text>
+
+  <!-- Divider between SKIM-specific losses and the shared basic-KD term -->
+  <line x1="40" y1="208" x2="760" y2="208" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- ROW 3: L_logit_KL spans everything, labeled as basic KD's whole loss -->
+  <text x="40" y="234" font-size="11" font-weight="600" fill="#534AB7" letter-spacing="0.06em">BASIC KD</text>
+
+  <!-- Reading column: basic KD does not apply here (no next-token distribution on prompt positions) -->
+  <text x="280" y="246" text-anchor="middle" font-size="11" fill="#B4B2A9" font-style="italic">not applied — prompt, not output</text>
+
+  <rect x="420" y="222" width="340" height="42" rx="8" fill="#F4F2FE" stroke="#534AB7" stroke-width="1" stroke-dasharray="6 3"/>
+  <text x="590" y="242" text-anchor="middle" font-size="13" fill="#26215C" font-weight="700" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">L_logit_KL</text>
+  <text x="590" y="258" text-anchor="middle" font-size="10" fill="#3C3489" font-style="italic">forward KL at every output position — this is basic KD on its own</text>
+
+</svg>
