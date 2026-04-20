@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <text x="40" y="32" font-size="13" font-weight="500" fill="#666" letter-spacing="0.08em">ONE TOOL-CALLING SAMPLE</text>
+
+  <!-- Prompt box with mixed content; reading positions highlighted -->
+  <rect x="40" y="48" width="720" height="180" rx="10" fill="#FDFCF7" stroke="#B4B2A9" stroke-width="0.5"/>
+  <text x="56" y="72" font-size="13" fill="#5F5E5A" font-weight="500">Prompt — only content endpoints are reading positions</text>
+
+  <!-- Line 1: system instruction (all muted) -->
+  <text x="56" y="100" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">System: You are a tool-calling assistant.</text>
+
+  <!-- Line 2: first tool -->
+  <text x="56" y="124" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">Tools: [{"name": "get_</text>
+  <rect x="217" y="112" width="52" height="18" rx="3" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="220" y="124" font-size="12" fill="#042C53" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600">weather</text>
+  <text x="271" y="124" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">", "description": "Get current </text>
+  <rect x="492" y="112" width="52" height="18" rx="3" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="495" y="124" font-size="12" fill="#042C53" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600">weather</text>
+  <text x="546" y="124" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">"},</text>
+
+  <!-- Line 3: second tool -->
+  <text x="56" y="144" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">{"name": "get_</text>
+  <rect x="159" y="132" width="60" height="18" rx="3" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="162" y="144" font-size="12" fill="#042C53" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600">forecast</text>
+  <text x="221" y="144" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">", "description": "Get 7-day </text>
+  <rect x="432" y="132" width="60" height="18" rx="3" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="435" y="144" font-size="12" fill="#042C53" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600">forecast</text>
+  <text x="494" y="144" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">"}]</text>
+
+  <!-- Line 4: user query -->
+  <text x="56" y="172" font-size="12" fill="#888780" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">User: What's the weather like in </text>
+  <rect x="291" y="160" width="46" height="18" rx="3" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="294" y="172" font-size="12" fill="#042C53" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-weight="600">Seoul?</text>
+
+  <!-- Legend inside prompt box -->
+  <rect x="56" y="196" width="14" height="12" rx="2" fill="none" stroke="#378ADD" stroke-width="1"/>
+  <text x="78" y="207" font-size="11" fill="#5F5E5A">reading position — last token of each content span</text>
+
+  <text x="40" y="260" font-size="13" font-weight="500" fill="#666" letter-spacing="0.08em">OUTPUT TOKENS — PHASE-LABELED</text>
+
+  <!-- write tokens (gray) -->
+  <g fill="#F1EFE8" stroke="#888780" stroke-width="0.5">
+    <rect x="40" y="278" width="42" height="30" rx="4"/>
+    <rect x="86" y="278" width="58" height="30" rx="4"/>
+    <rect x="148" y="278" width="30" height="30" rx="4"/>
+  </g>
+  <text x="61" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">[{"</text>
+  <text x="115" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">name</text>
+  <text x="163" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">":"</text>
+
+  <!-- decision: get_weather (teal) -->
+  <rect x="182" y="278" width="130" height="30" rx="4" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+  <text x="247" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#04342C" font-weight="500">get_weather</text>
+
+  <!-- more write (gray) -->
+  <g fill="#F1EFE8" stroke="#888780" stroke-width="0.5">
+    <rect x="316" y="278" width="42" height="30" rx="4"/>
+    <rect x="362" y="278" width="102" height="30" rx="4"/>
+    <rect x="468" y="278" width="42" height="30" rx="4"/>
+    <rect x="514" y="278" width="50" height="30" rx="4"/>
+    <rect x="568" y="278" width="30" height="30" rx="4"/>
+  </g>
+  <text x="337" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">","</text>
+  <text x="413" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">arguments</text>
+  <text x="489" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">":{"</text>
+  <text x="539" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">city</text>
+  <text x="583" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">":"</text>
+
+  <!-- decision: Seoul (teal) -->
+  <rect x="602" y="278" width="76" height="30" rx="4" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+  <text x="640" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#04342C" font-weight="500">Seoul</text>
+
+  <rect x="682" y="278" width="78" height="30" rx="4" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+  <text x="721" y="297" text-anchor="middle" font-size="12" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#444441">"}}]</text>
+
+  <!-- phase labels under each segment -->
+  <text x="115" y="326" text-anchor="middle" font-size="11" fill="#5F5E5A">write</text>
+  <text x="247" y="326" text-anchor="middle" font-size="11" fill="#085041" font-weight="500">decide</text>
+  <text x="490" y="326" text-anchor="middle" font-size="11" fill="#5F5E5A">write</text>
+  <text x="640" y="326" text-anchor="middle" font-size="11" fill="#085041" font-weight="500">decide</text>
+  <text x="721" y="326" text-anchor="middle" font-size="11" fill="#5F5E5A">write</text>
+
+  <line x1="40" y1="354" x2="760" y2="354" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <text x="40" y="378" font-size="13" font-weight="500" fill="#666" letter-spacing="0.08em">WHAT EACH PHASE COSTS UNDER CONSTRAINED DECODING</text>
+
+  <g>
+    <rect x="40" y="398" width="226" height="108" rx="10" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+    <text x="153" y="420" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C">Reading</text>
+    <text x="56" y="444" font-size="12" fill="#042C53">Tool names, descriptions,</text>
+    <text x="56" y="462" font-size="12" fill="#042C53">query endpoints. Grammar</text>
+    <text x="56" y="480" font-size="12" fill="#042C53">cannot replace this — model</text>
+    <text x="56" y="498" font-size="12" fill="#042C53" font-weight="500">must preserve.</text>
+  </g>
+
+  <g>
+    <rect x="287" y="398" width="226" height="108" rx="10" fill="#9FE1CB" stroke="#0F6E56" stroke-width="1"/>
+    <text x="400" y="420" text-anchor="middle" font-size="14" font-weight="500" fill="#085041">Deciding</text>
+    <text x="303" y="444" font-size="12" fill="#04342C">Choosing tool, choosing</text>
+    <text x="303" y="462" font-size="12" fill="#04342C">argument values. Grammar</text>
+    <text x="303" y="480" font-size="12" fill="#04342C">narrows options but model</text>
+    <text x="303" y="498" font-size="12" fill="#04342C" font-weight="500">picks the right one.</text>
+  </g>
+
+  <g>
+    <rect x="534" y="398" width="226" height="108" rx="10" fill="#F1EFE8" stroke="#888780" stroke-width="0.5"/>
+    <text x="647" y="420" text-anchor="middle" font-size="14" font-weight="500" fill="#2C2C2A">Writing</text>
+    <text x="550" y="444" font-size="12" fill="#444441">Emitting JSON structure:</text>
+    <text x="550" y="462" font-size="12" fill="#444441">braces, commas, keys.</text>
+    <text x="550" y="480" font-size="12" fill="#444441">Grammar handles this at</text>
+    <text x="550" y="498" font-size="12" fill="#444441" font-weight="500">inference — prunable.</text>
+  </g>
+</svg>
