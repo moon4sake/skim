@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+
+  <text x="40" y="28" font-size="14" font-weight="600" fill="#2C2C2A">Why generic pruning + KD fails on tool agents</text>
+  <text x="40" y="46" font-size="12" fill="#5F5E5A">Hammer-3B, 25% structured sparsity. F bar left, G bar right.</text>
+
+  <!-- ===== LEFT PANEL: BFCL-v3 ===== -->
+  <text x="80" y="76" font-size="13" font-weight="600" fill="#2C2C2A">BFCL-v3</text>
+  <line x1="110" y1="120" x2="110" y2="320" stroke="#888780" stroke-width="0.5"/>
+  <line x1="110" y1="320" x2="440" y2="320" stroke="#888780" stroke-width="0.5"/>
+
+  <!-- y axis. Plot range y=140..320 = 180px = 1.0 -->
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="106" y1="320" x2="110" y2="320" stroke="#888780" stroke-width="0.5"/>
+    <text x="102" y="324">0.0</text>
+    <line x1="106" y1="275" x2="110" y2="275" stroke="#888780" stroke-width="0.5"/>
+    <text x="102" y="279">0.25</text>
+    <line x1="106" y1="230" x2="110" y2="230" stroke="#888780" stroke-width="0.5"/>
+    <text x="102" y="234">0.50</text>
+    <line x1="106" y1="185" x2="110" y2="185" stroke="#888780" stroke-width="0.5"/>
+    <text x="102" y="189">0.75</text>
+    <line x1="106" y1="140" x2="110" y2="140" stroke="#888780" stroke-width="0.5"/>
+    <text x="102" y="144">1.00</text>
+  </g>
+
+  <line x1="110" y1="275" x2="440" y2="275" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="110" y1="230" x2="440" y2="230" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="110" y1="185" x2="440" y2="185" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="110" y1="140" x2="440" y2="140" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- 4 groups at centers 145, 225, 315, 405. Bar width 14, F at center-16..center-2, G at center..center+14. -->
+
+  <!-- Group 1: Dense | F=.799 (144), G=.894 (161) -->
+  <rect x="129" y="176" width="14" height="144" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="145" y="159" width="14" height="161" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="152" y="153" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600">.799 / .894</text>
+
+  <!-- Group 2: LLM-P pre-KD | F=.558 (100), G=.714 (129) -->
+  <rect x="209" y="220" width="14" height="100" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <rect x="225" y="191" width="14" height="129" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <text x="232" y="185" text-anchor="middle" font-size="9" fill="#444441" font-weight="600">.558 / .714</text>
+
+  <!-- Group 3: LLM-P post-KD | F=.745 (134), G=.772 (139) -->
+  <rect x="299" y="186" width="14" height="134" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <rect x="315" y="181" width="14" height="139" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <text x="322" y="175" text-anchor="middle" font-size="9" fill="#444441" font-weight="600">.745 / .772</text>
+
+  <!-- Group 4: FLAP post-KD (INVERSION) | F=.748 (135), G=.514 (93) -->
+  <rect x="389" y="185" width="14" height="135" fill="#FBE4D5" stroke="#993C1D" stroke-width="0.8"/>
+  <rect x="405" y="227" width="14" height="93" fill="#D85A30" stroke="#993C1D" stroke-width="0.8"/>
+  <text x="412" y="179" text-anchor="middle" font-size="9" fill="#993C1D" font-weight="700">.748 / .514</text>
+
+  <!-- ANNOTATION 1 (lowered): bracket sitting just above LLM-P value labels.
+       Group 2 value label at y=185, Group 3 at y=175. Bracket text at y=140, line y=148. -->
+  <line x1="225" y1="148" x2="315" y2="148" stroke="#085041" stroke-width="0.8"/>
+  <line x1="225" y1="148" x2="225" y2="155" stroke="#085041" stroke-width="0.8"/>
+  <line x1="315" y1="148" x2="315" y2="155" stroke="#085041" stroke-width="0.8"/>
+  <text x="270" y="140" text-anchor="middle" font-size="10" fill="#085041" font-weight="700">ΔF: +.187    ΔG: +.058</text>
+
+  <!-- ANNOTATION 2: red badge above FLAP value label, no surrounding box -->
+  <rect x="386" y="138" width="38" height="18" rx="3" fill="#993C1D"/>
+  <text x="405" y="151" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="700">G &lt; F</text>
+  <!-- Small downward arrow from badge to FLAP value label -->
+  <line x1="405" y1="156" x2="405" y2="167" stroke="#993C1D" stroke-width="1"/>
+  <polygon points="405,170 401,164 409,164" fill="#993C1D"/>
+
+  <!-- X-axis group labels -->
+  <g font-size="10" fill="#2C2C2A">
+    <text x="152" y="334" text-anchor="end" transform="rotate(-45 152 334)">Dense</text>
+    <text x="232" y="334" text-anchor="end" transform="rotate(-45 232 334)">LLM-P pre-KD</text>
+    <text x="322" y="334" text-anchor="end" transform="rotate(-45 322 334)">LLM-P post-KD</text>
+  </g>
+  <g font-size="10" fill="#993C1D" font-weight="700">
+    <text x="412" y="334" text-anchor="end" transform="rotate(-45 412 334)">FLAP post-KD</text>
+  </g>
+
+  <!-- ===== RIGHT PANEL: API-Bank L1 ===== -->
+  <text x="500" y="76" font-size="13" font-weight="600" fill="#2C2C2A">API-Bank L1</text>
+  <line x1="530" y1="120" x2="530" y2="320" stroke="#888780" stroke-width="0.5"/>
+  <line x1="530" y1="320" x2="860" y2="320" stroke="#888780" stroke-width="0.5"/>
+
+  <g font-size="10" fill="#5F5E5A" text-anchor="end">
+    <line x1="526" y1="320" x2="530" y2="320" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="324">0.0</text>
+    <line x1="526" y1="275" x2="530" y2="275" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="279">0.25</text>
+    <line x1="526" y1="230" x2="530" y2="230" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="234">0.50</text>
+    <line x1="526" y1="185" x2="530" y2="185" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="189">0.75</text>
+    <line x1="526" y1="140" x2="530" y2="140" stroke="#888780" stroke-width="0.5"/>
+    <text x="522" y="144">1.00</text>
+  </g>
+
+  <line x1="530" y1="275" x2="860" y2="275" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="230" x2="860" y2="230" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="185" x2="860" y2="185" stroke="#EDEBE4" stroke-width="0.5"/>
+  <line x1="530" y1="140" x2="860" y2="140" stroke="#EDEBE4" stroke-width="0.5"/>
+
+  <!-- 4 groups at centers 565, 645, 735, 825. -->
+
+  <!-- Group 1: Dense | F=.759 (137), G=.762 (137) -->
+  <rect x="549" y="183" width="14" height="137" fill="#B5D4F4" stroke="#185FA5" stroke-width="0.5"/>
+  <rect x="565" y="183" width="14" height="137" fill="#378ADD" stroke="#185FA5" stroke-width="0.5"/>
+  <text x="572" y="177" text-anchor="middle" font-size="9" fill="#0C447C" font-weight="600">.759 / .762</text>
+
+  <!-- Group 2: LLM-P pre-KD | F=.283 (51), G=.596 (107) -->
+  <rect x="629" y="269" width="14" height="51" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <rect x="645" y="213" width="14" height="107" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <text x="652" y="207" text-anchor="middle" font-size="9" fill="#444441" font-weight="600">.283 / .596</text>
+
+  <!-- Group 3: LLM-P post-KD | F=.534 (96), G=.652 (117) -->
+  <rect x="719" y="224" width="14" height="96" fill="#E8E6DE" stroke="#444441" stroke-width="0.5"/>
+  <rect x="735" y="203" width="14" height="117" fill="#B4B2A9" stroke="#444441" stroke-width="0.5"/>
+  <text x="742" y="197" text-anchor="middle" font-size="9" fill="#444441" font-weight="600">.534 / .652</text>
+
+  <!-- Group 4: FLAP post-KD (INVERSION) | F=.622 (112), G=.529 (95) -->
+  <rect x="809" y="208" width="14" height="112" fill="#FBE4D5" stroke="#993C1D" stroke-width="0.8"/>
+  <rect x="825" y="225" width="14" height="95" fill="#D85A30" stroke="#993C1D" stroke-width="0.8"/>
+  <text x="832" y="202" text-anchor="middle" font-size="9" fill="#993C1D" font-weight="700">.622 / .529</text>
+
+  <!-- ANNOTATION 1: bracket above LLM-P value labels.
+       Group 2 value label at y=207, Group 3 at y=197. Bracket text at y=170, line y=178. -->
+  <line x1="645" y1="178" x2="735" y2="178" stroke="#085041" stroke-width="0.8"/>
+  <line x1="645" y1="178" x2="645" y2="185" stroke="#085041" stroke-width="0.8"/>
+  <line x1="735" y1="178" x2="735" y2="185" stroke="#085041" stroke-width="0.8"/>
+  <text x="690" y="170" text-anchor="middle" font-size="10" fill="#085041" font-weight="700">ΔF: +.251    ΔG: +.056</text>
+
+  <!-- ANNOTATION 2: red badge above FLAP value label -->
+  <rect x="806" y="160" width="38" height="18" rx="3" fill="#993C1D"/>
+  <text x="825" y="173" text-anchor="middle" font-size="11" fill="#FFFFFF" font-weight="700">G &lt; F</text>
+  <line x1="825" y1="178" x2="825" y2="189" stroke="#993C1D" stroke-width="1"/>
+  <polygon points="825,192 821,186 829,186" fill="#993C1D"/>
+
+  <g font-size="10" fill="#2C2C2A">
+    <text x="572" y="334" text-anchor="end" transform="rotate(-45 572 334)">Dense</text>
+    <text x="652" y="334" text-anchor="end" transform="rotate(-45 652 334)">LLM-P pre-KD</text>
+    <text x="742" y="334" text-anchor="end" transform="rotate(-45 742 334)">LLM-P post-KD</text>
+  </g>
+  <g font-size="10" fill="#993C1D" font-weight="700">
+    <text x="832" y="334" text-anchor="end" transform="rotate(-45 832 334)">FLAP post-KD</text>
+  </g>
+
+  <!-- ===== TWO MOTIVATION BOXES BELOW ===== -->
+  <line x1="40" y1="408" x2="860" y2="408" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Motivation 1: KD lifts F, not G -->
+  <rect x="40" y="420" width="395" height="38" rx="6" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.6"/>
+  <text x="56" y="438" font-size="11" font-weight="700" fill="#085041">① KD lifts F, not G</text>
+  <text x="56" y="452" font-size="10" fill="#085041">Standard recovery is grammar-blind.</text>
+
+  <!-- Motivation 2: inversion -->
+  <rect x="465" y="420" width="395" height="38" rx="6" fill="#FBE4D5" stroke="#993C1D" stroke-width="0.6"/>
+  <text x="481" y="438" font-size="11" font-weight="700" fill="#993C1D">② KD can invert the schema</text>
+  <text x="481" y="452" font-size="10" fill="#993C1D">Some baselines end up with G &lt; F after recovery.</text>
+
+</svg>
